@@ -26,8 +26,12 @@
 
         socket.onmessage = function(event) {
             var received = event.data;
+
+            console.log(event);
+
             if (awaitingUsername) {
                 awaitingUsername = false;
+                console.log("callbacking");
                 callback();
             }
 
@@ -36,8 +40,9 @@
     }
 
     ext.getNextMessage = function() {
+        console.log(pendingMessages);
         if (pendingMessages == []) {
-            return "";
+            return "no new message";
         } else {
             return pendingMessages.pop();
         }
@@ -53,7 +58,7 @@
     var descriptor = {
         blocks: [
             ['w', 'connect to %s as user %s', 'connect', '', ''],
-            ['w', 'send message %s', 'sendMessage', 'Hello, World!'],
+            [' ', 'send message %s', 'sendMessage', 'Hello, World!'],
             ['r', 'next message', 'getNextMessage']
         ],
         menus: {
