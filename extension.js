@@ -8,7 +8,7 @@
     var pendingMessages = [];
     var awaitingUsername = true;
 
-    ext.sendMessage(message) {
+    ext.sendMessage = function(message) {
         socket.send(message);
     }
 
