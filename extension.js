@@ -39,7 +39,7 @@
     }
 
     ext.getNextMessage = function() {
-        if (pendingMessages == []) {
+        if (pendingMessages == [] || pendingMessages == '') {
             return "no new message";
         } else {
             return pendingMessages.pop();
