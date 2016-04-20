@@ -8,7 +8,7 @@
     var pendingMessages = [];
     var awaitingUsername = true;
 
-    function sendMessage(message) {
+    ext.sendMessage(message) {
         socket.send(message);
     }
 
@@ -52,12 +52,17 @@
         return {status: 2, msg: 'Ready'};
     };
 
+    ext.hatNewMessage = function() {
+       return pendingMessages == [] || pendingMessages == '';
+    };
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['w', 'connect to %s as user %s', 'connect', '', ''],
             [' ', 'send message %s', 'sendMessage', 'Hello, World!'],
-            ['r', 'next message', 'getNextMessage']
+            ['r', 'next message', 'getNextMessage'],
+            ['h', 'when new message received', 'hatNewMessage']
         ],
         menus: {
            
