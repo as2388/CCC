@@ -70,7 +70,7 @@ wsServer.on('request', function(request) {
                 userName = htmlEntities(message.utf8Data);
                 
                 //connection.sendUTF(JSON.stringify({type:'new-user', data: userColor}));
-                var json = JSON.stringify({type:'user-connect', data: userName});
+                var json = "New User: " + userName;
                 for (var i=0; i < clients.length; i++) {
                     clients[i].sendUTF(json);
                 }
@@ -88,7 +88,7 @@ wsServer.on('request', function(request) {
                 history.push(obj);
 
                 // broadcast message to all connected clients
-                var json = JSON.stringify({ type:'message', data: obj.author + ":" + obj.text });
+                var json = userName + ": " + obj.text;
                 for (var i=0; i < clients.length; i++) {
                     clients[i].sendUTF(json);
                 }
@@ -99,11 +99,11 @@ wsServer.on('request', function(request) {
     // user disconnected
     connection.on('close', function(connection) {
         if (userName !== false) {
-            console.log((new Date()) + " User Lost: " + connection.remoteAddress + ".");
+            console.log((new Date()) + " Lost User: " + userName + ".");
             // remove user from the list of connected clients
             clients.splice(index, 1);
            
-            var json = JSON.stringify({ type:'user-disconnect', data: userName });
+            var json = 'Lost User:' + userName;
             for (var i=0; i < clients.length; i++) {
                 clients[i].sendUTF(json);
             }

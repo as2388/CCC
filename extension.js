@@ -9,7 +9,7 @@
     var awaitingUsername = true;
 
     function sendMessage(message) {
-        socket.send(message);
+        socket.sendUTF(message);
     }
 
     ext.connect = function(addr, username, callback) {
@@ -27,8 +27,6 @@
         socket.onmessage = function(event) {
             var received = event.data;
 
-            console.log(event);
-
             if (awaitingUsername) {
                 awaitingUsername = false;
                 console.log("callbacking");
@@ -36,11 +34,11 @@
             }
 
             pendingMessages.push(received);
+            console.log(pendingMessages);
         }
     }
 
     ext.getNextMessage = function() {
-        console.log(pendingMessages);
         if (pendingMessages == []) {
             return "no new message";
         } else {
