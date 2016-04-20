@@ -42,7 +42,7 @@
         if (pendingMessages == [] || pendingMessages == '') {
             return "No New Message";
         } else {
-            return pendingMessages.pop();
+            return pendingMessages.shift();
         }
     }
 
