@@ -30,7 +30,6 @@
 
             if (awaitingUsername) {
                 awaitingUsername = false;
-                console.log("callbacking");
                 callback();
             }
 
@@ -54,9 +53,7 @@
     };
 
     ext.hatNewMessage = function() {
-        console.log('hat');
-        console.log(pendingMessages == [] || pendingMessages == '');
-       return pendingMessages == [] || pendingMessages == '';
+       return !(pendingMessages == [] || pendingMessages == '');
     };
 
     // Block and block menu descriptions
