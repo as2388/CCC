@@ -21,7 +21,7 @@
         socket = new WebSocket("ws://" + addr + ":1337");
 
         socket.onopen = function(event) {
-            sendMessage(username);
+            ext.sendMessage(username);
         }   
 
         socket.onmessage = function(event) {
