@@ -9,7 +9,7 @@
     var awaitingUsername = true;
 
     function sendMessage(message) {
-        socket.sendUTF(message);
+        socket.send(message);
     }
 
     ext.connect = function(addr, username, callback) {
