@@ -16,6 +16,7 @@
         if (socket != null) {
             socket.close();
             awaitingUsername = true;
+            pendingMessages = [];
         }
 
         socket = new WebSocket("ws://" + addr + ":1337");
@@ -53,6 +54,8 @@
     };
 
     ext.hatNewMessage = function() {
+        console.log('hat');
+        console.log(pendingMessages == [] || pendingMessages == '');
        return pendingMessages == [] || pendingMessages == '';
     };
 
