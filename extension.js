@@ -40,7 +40,7 @@
 
     ext.getNextMessage = function() {
         if (pendingMessages == [] || pendingMessages == '') {
-            return "no new message";
+            return "No New Message";
         } else {
             return pendingMessages.pop();
         }
@@ -61,8 +61,8 @@
         blocks: [
             ['w', 'connect to %s as user %s', 'connect', '', ''],
             [' ', 'send message %s', 'sendMessage', 'Hello, World!'],
-            ['r', 'next message', 'getNextMessage'],
-            ['h', 'when new message received', 'hatNewMessage']
+            ['r', 'next message', 'getNextMessage']
+            //['h', 'when new message received', 'hatNewMessage']
         ],
         menus: {
            
